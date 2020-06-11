@@ -8,12 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CurrentDateController
 {
-    /**
-     * jeśli zainstalujemy symfony require annotations, wtedy możemy ustawiać ściężkę tutaj zamiast w routingach
-     * @Route(path="/index")
-     * @return Response
-     * @throws
-    **/
+//    /**
+//     * jeśli zainstalujemy symfony require annotations, wtedy możemy ustawiać ściężkę tutaj zamiast w routingach
+//     * ścieżka będzie działać zarówna ta jak i ta w routes.yaml
+//     * @Route(path="/index")
+//     * @return Response
+//     * @throws
+//    **/
     public function main(): Response
     {
         $currentDate = new DateTime(); //$currentDate jest obiektem klasy DateTime
