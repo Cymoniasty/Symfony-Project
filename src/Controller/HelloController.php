@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class HelloController
+ * @package App\Controller
+ * @Route("/page")
+ */
 class HelloController extends AbstractController
 {
     /**
@@ -26,20 +31,27 @@ class HelloController extends AbstractController
     }
 
     /**
-     * @Route(path="redirect/{action}")
+     * @Route(path="redirect/{action}", requirements={"action"="hello|currentDate"})
      * @param string $action
      * @return RedirectResponse
      * @throws \Exception
      */
     public function moveToAction(string $action): RedirectResponse
     {
+        return $this->redirectToRoute($action, ['name' => 'Some name']);
 
-        if('hello' == $action){
-            return $this->redirectToRoute('hello', ['name' => 'Some name']);
-        }else if ('currentDate' == $action){
-            return $this->redirectToRoute('currentDate');
-        }
-        throw new \Exception("Wrong action");
+    }
+
+    /**
+     * @Route(path="page/{author}/{page}", requirements={"page" = "\d+"})
+     * @param int $page
+     * @param string $author
+     * @return Response
+     */
+    public function page(string $author, int $page =1): Response
+    {
+
+        return new Response("Welcome on page $page for $author");
     }
 
 }
