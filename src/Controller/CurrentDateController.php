@@ -10,7 +10,7 @@ class CurrentDateController
     /**
      * jeśli zainstalujemy symfony require annotations, wtedy możemy ustawiać ściężkę tutaj zamiast w routingach
      * ścieżka będzie działać zarówna ta jak i ta w routes.yaml
-     * @Route(path="/index", name="currentDate", methods={"POST"})
+     * @Route(path="/index", name="currentDate", methods={"GET"})
      * @return Response
      * @throws
      **/
@@ -22,7 +22,7 @@ class CurrentDateController
     }
 
     /**
-     * @Route(path="/index", methods={"GET"})
+     * @Route(path="/index/tomorrow", methods={"GET"})
      * @return Response
      * @throws \Exception
      */
