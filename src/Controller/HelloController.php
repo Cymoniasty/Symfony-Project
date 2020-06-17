@@ -19,10 +19,11 @@ class HelloController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function hello(string $name, Request $request): Response
+    public function hello(string $name,Request $request): Response
     {
 
-        return $this->render('hello/hi.html.twig');
+        $personNames = ['XXX', 'YYY', 'VVV'];
+        return $this->render('hello/hi.html.twig', ['name' => "$name", 'personNames' => $personNames]);
 
     }
 
