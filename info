@@ -1,1 +1,3 @@
 symfony serve - żeby uruchomić serwer na którym postawiona jest apka.
+w adnotacjach - każdy zdefiniowany parametr musi być w podwójnych ciapkach (composer req annotations).
+twig - (composer req twig)
