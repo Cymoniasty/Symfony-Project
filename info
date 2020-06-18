@@ -1,7 +1,13 @@
-symfony serve - żeby uruchomić serwer na którym postawiona jest apka.
-w adnotacjach - każdy zdefiniowany parametr musi być w podwójnych ciapkach (composer req annotations).
-twig - (composer req twig)
-monolog - do monitorowania lepiej logów (composer req monolog)
-profiler - paczka, która ułatwia spr. requestów i dużo info. nt. co się dzieje (composer req profiler),
+1. symfony serve - żeby uruchomić serwer na którym postawiona jest apka.
+    1a - żeby zatrzymać server to : symfony local:server:stop
+2. w adnotacjach - każdy zdefiniowany parametr musi być w podwójnych ciapkach (composer req annotations).
+3. twig - (composer req twig)
+4. monolog - do monitorowania lepiej logów (composer req monolog)
+5. profiler - paczka, która ułatwia spr. requestów i dużo info. nt. co się dzieje (composer req profiler),
     koniecznie po zainstalowaniu do przeczucenia w composer.json do require-dev bo ma wrażliwe info czasami i lepiej żeby nie było tego na prodzie
-composer require symfony/orm-pack - do zainstalowania doctrine
+6. composer require symfony/orm-pack - do zainstalowania doctrine
+    6a. skonfigurować w .env hasło i nazwe user'a
+    6b. wygenerować nową baze za pomocą "./bin/console doctrine:database:create" -> jeśli to local i nie ma hasła ustawionego
+        to zostawiamy taką konfigurację DATABASE_URL=mysql://root:@127.0.0.1:3306/kurs?serverVersion=5.7
+    6c. Aktualizacja bazy danych: ./bin/console doctrine:schema:update --force
+    6d. żeby sprawdzić jakie query zostanie wygenerowane to: ./bin/console doctrine:schema:update --dump-sql
