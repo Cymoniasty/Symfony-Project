@@ -3,8 +3,17 @@
 {% block body %}
     <span>Cześć </span>
     <span style="font-weight: 600;text-transform: uppercase">{{ name }}</span>
-    <div>Masz pozdrowienia od: </div>
-    {% for x in personNames %}
-        <p>{{ x }}</p>
-    {% endfor %}
+    <div>Masz pozdrowienia od:</div>
+    {% if personNames is not empty %}
+        {% for x in personNames %}
+            <p>{{ x }}</p>
+        {% endfor %}
+    {% else %}
+        <div>Nikt jeszcze nikogo nie pozdrawia, bo nie ma ludzi.</div>
+    {% endif %}
+
+    {% if randomText is defined %}
+    <p>Lubie placki</p>
+    {% endif %}
+
 {% endblock %}

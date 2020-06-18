@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +18,15 @@ class HelloController extends AbstractController
      * @param string $name
      * @param Request $request
      * @return Response
+     * @param LoggerInterface $logger
      * @throws \Exception
      */
-    public function hello(string $name,Request $request): Response
+    public function hello(string $name,Request $request, LoggerInterface $logger): Response
     {
 
         $personNames = ['XXX', 'YYY', 'VVV'];
-        return $this->render('hello/hi.html.twig', ['name' => "$name", 'personNames' => $personNames]);
+        $logger->debug("Powitany: " . $name);
+        return $this->render('hello/hi.html.twig', ['name' => "$name", 'personNames' => $personNames, 'randomText' => 'true']);
 
     }
 
