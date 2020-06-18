@@ -30,7 +30,7 @@ class User
      * @ORM\Column(type="string", nullable=true)
      * @var string|null
      */
-    private $surrname;
+    private $surname;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
@@ -48,11 +48,11 @@ class User
     }
 
     /**
-     * @param string $surrname
+     * @param string $surname
      */
-    public function setSurrname(string $surrname): void
+    public function setSurname(?string $surname): void
     {
-        $this->surrname = $surrname;
+        $this->surname = $surname;
     }
 
     /**
@@ -72,11 +72,11 @@ class User
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSurrname(): ?string
+    public function getSurname(): ?string
     {
-        return $this->surrname;
+        return $this->surname;
     }
 
     /**
@@ -94,8 +94,6 @@ class User
     {
         $this->category = $category;
     }
-
-
 
 
 }
