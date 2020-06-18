@@ -13,7 +13,16 @@
     {% endif %}
 
     {% if randomText is defined %}
-    <p>Lubie placki</p>
+        <p>Lubie placki</p>
     {% endif %}
 
+    {% if number is defined %}
+        <p>Twoja szczęśliwa liczba to: {{ number }}</p>
+        {% if number is divisible by (2) %}
+            <p>{{ number }} to liczba parzysta</p>
+        {% else %}
+            <p>{{ number }} to liczba nie parzysta</p>
+        {% endif %}
+
+    {% endif %}
 {% endblock %}

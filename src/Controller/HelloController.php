@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Service\LuckyNumber;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,16 +18,23 @@ class HelloController extends AbstractController
      * @Route(path="/hi/{name}", name="hello")
      * @param string $name
      * @param Request $request
-     * @return Response
      * @param LoggerInterface $logger
+     * @param LuckyNumber $luckyNumber
+     * @return Response
      * @throws \Exception
      */
-    public function hello(string $name,Request $request, LoggerInterface $logger): Response
+    public function hello(string $name, Request $request, LoggerInterface $logger, LuckyNumber $luckyNumber): Response
     {
 
-        $personNames = ['XXX', 'YYY', 'VVV'];
+        $number = $luckyNumber->getLuckyNumber();
+        $personNames = ['XXX', 'YYY', 'ZZZ'];
         $logger->debug("Powitany: " . $name);
-        return $this->render('hello/hi.html.twig', ['name' => "$name", 'personNames' => $personNames, 'randomText' => 'true']);
+        return $this->render('hello/hi.html.twig', [
+            'name' => "$name",
+            'personNames' => $personNames,
+            'randomText' => 'true',
+            'number' => $number,
+        ]);
 
     }
 
