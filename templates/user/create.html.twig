@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Dodaj osobę</h1>
+
+    <form method="post" action="">
+        <input name="name" value="{{ user.name }}" placeholder="Imię" required>
+        <input name="surrname" value="{{ user.surrname }}" placeholder="Nazwisko">
+        <input type="submit" value="Dodaj">
+    </form>
+
+{% endblock %}

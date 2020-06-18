@@ -33,6 +33,12 @@ class User
     private $surrname;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     * @var Category
+     */
+    private $category;
+
+    /**
      * User constructor.
      * @param string $name
      */
@@ -72,6 +78,23 @@ class User
     {
         return $this->surrname;
     }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
+
 
 
 
