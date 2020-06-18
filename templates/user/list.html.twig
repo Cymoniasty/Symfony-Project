@@ -6,7 +6,7 @@
 
     {% if users is not empty %}
         {% for user in users %}
-            <div>{{ user.id }}{{ user.name }} {{ user.surname }}</div>
+            <div>{{ user.id }}{{ user.name }} {{ user.surname }} <span><a href="{{ path('user_delete', {'id': user.id}) }}">Usuń</a></span></div>
         {% endfor %}
     {% else %}
         <div>Brak osób</div>
