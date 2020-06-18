@@ -69,13 +69,34 @@ class UserController extends AbstractController
      */
     public function delete(int $id, EntityManagerInterface $em): Response
     {
-
         $repository = $em->getRepository(User::class);
         $user = $repository->find($id);
         $em->remove($user);
         $em->flush();
         return $this->redirectToRoute("user_list");
+    }
 
+    /**
+     * @param User $user
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @return Response
+     * @Route(path="/update/{id}", name="update_user")
+     */
+    public function update(User $user, EntityManagerInterface $em, Request $request): Response
+    {
+
+        if ('POST' === $request->getMethod()) {
+            $user->setName($request->get('name', ''));
+            $user->setSurname($request->get('surname', ''));
+            $em->flush();
+            
+            return $this->redirectToRoute("user_list");
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+        ]);
     }
 
 }
