@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{#    path zajmuje się mapowaniem name z kontrolerów i wyciąga url'a#}
+
+    {% if users is not empty %}
+        {% for user in users %}
+            <div>{{ user.id }}{{ user.name }} {{ user.surname }}</div>
+        {% endfor %}
+    {% else %}
+        <div>Brak osób</div>
+    {% endif %}
+
+    <a href="{{ path('user_create') }}">Dodaj user'a</a>
+
+{% endblock %}

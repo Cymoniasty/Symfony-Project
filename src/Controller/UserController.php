@@ -21,7 +21,7 @@ class UserController extends AbstractController
     /**
      * @param Request $request
      * @param EntityManagerInterface $em
-     * @Route(path="/create")
+     * @Route(path="/create", name="user_create")
      * @return Response
      */
     public function create(Request $request, EntityManagerInterface $em): Response
@@ -29,20 +29,36 @@ class UserController extends AbstractController
         if ('POST' === $request->getMethod()) {
             $user = new User($request->get('name', ''));
             $user->setSurname($request->get('surname'));
-
             //persist przyjmuje tylko obiekt encji
             $em->persist($user);
             //flush - skonczylismy edycje naszych encji i doctrine powinien uzupelnic dane w bazie
             $em->flush();
 
+            return $this->redirectToRoute('user_list');
         } else {
             $user = new User('');
         }
 
         return $this->render('user/create.html.twig', [
-            'user' => $user
+            'user' => $user,
         ]);
+    }
 
+    /**
+     * @param EntityManagerInterface $em
+     * @return Response
+     * @Route(path="/list", name="user_list")
+     */
+    public function list(EntityManagerInterface $em): Response
+    {
+        //getRepository - komunikacja z tabela, która nas interesuje - wyciąga dane z tabeli
+        $repository = $em->getRepository(User::class);
+        //findAll - znajduje wszystkich user'ów w tabeli User
+        $users = $repository->findAll();
+
+        return $this->render('user/list.html.twig', [
+            'users' => $users,
+        ]);
     }
 
 }

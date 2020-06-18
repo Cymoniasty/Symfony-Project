@@ -14,7 +14,7 @@ class User
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="integer", name="id", nullable=false)
+     * @ORM\Column(type="integer")
      * @var integer $uid
      * @ORM\GeneratedValue(strategy="AUTO")
      */
