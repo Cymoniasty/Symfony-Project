@@ -9,5 +9,6 @@
     6a. skonfigurować w .env hasło i nazwe user'a
     6b. wygenerować nową baze za pomocą "./bin/console doctrine:database:create" -> jeśli to local i nie ma hasła ustawionego
         to zostawiamy taką konfigurację DATABASE_URL=mysql://root:@127.0.0.1:3306/kurs?serverVersion=5.7
-    6c. Aktualizacja bazy danych: ./bin/console doctrine:schema:update --force
+    6c. Aktualizacja bazy danych: ./bin/console doctrine:schema:update --force (d:s:u --f)
     6d. żeby sprawdzić jakie query zostanie wygenerowane to: ./bin/console doctrine:schema:update --dump-sql
+7. Paczka do formularzy - żeby nie pisać wiecznie z palca "composer require symfony/form"

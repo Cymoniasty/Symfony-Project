@@ -4,10 +4,7 @@
 
     <h1>Dodaj osobę</h1>
 
-    <form method="post" action="">
-        <input name="name" value="{{ user.name }}" placeholder="Imię" required>
-        <input name="surname" value="{{ user.surname }}" placeholder="Nazwisko">
-        <input type="submit" value="Dodaj">
-    </form>
+    {{ form(form) }}
+
 
 {% endblock %}

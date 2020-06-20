@@ -34,6 +34,12 @@ class User
     private $surname;
 
     /**
+     * @ORM\Column(type="boolean")
+     * @var boolean
+     */
+    private $iceLover;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
      * @var Category
      */
@@ -104,5 +110,20 @@ class User
         $this->category = $category;
     }
 
+    /**
+     * @return boolean
+     */
+    public function isIceLover(): ?bool
+    {
+        return $this->iceLover;
+    }
+
+    /**
+     * @param bool $iceLover
+     */
+    public function setIceLover(bool $iceLover): void
+    {
+        $this->iceLover = $iceLover;
+    }
 
 }

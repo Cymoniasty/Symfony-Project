@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,21 +27,19 @@ class UserController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
-        if ('POST' === $request->getMethod()) {
-            $user = new User($request->get('name', ''));
-            $user->setSurname($request->get('surname'));
-            //persist przyjmuje tylko obiekt encji
+        $user = new User('');
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
             $em->persist($user);
-            //flush - skonczylismy edycje naszych encji i doctrine powinien uzupelnic dane w bazie
             $em->flush();
 
             return $this->redirectToRoute('user_list');
-        } else {
-            $user = new User('');
         }
 
         return $this->render('user/create.html.twig', [
-            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -90,7 +89,7 @@ class UserController extends AbstractController
             $user->setName($request->get('name', ''));
             $user->setSurname($request->get('surname', ''));
             $em->flush();
-            
+
             return $this->redirectToRoute("user_list");
         }
 
