@@ -30,8 +30,9 @@ class UserController extends AbstractController
         $user = new User('');
 
         $form = $this->createForm(UserType::class, $user);
+        //wypełnianie wartości w user
         $form->handleRequest($request);
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             $em->persist($user);
             $em->flush();
 

@@ -12,3 +12,5 @@
     6c. Aktualizacja bazy danych: ./bin/console doctrine:schema:update --force (d:s:u --f)
     6d. żeby sprawdzić jakie query zostanie wygenerowane to: ./bin/console doctrine:schema:update --dump-sql
 7. Paczka do formularzy - żeby nie pisać wiecznie z palca "composer require symfony/form"
+8. Mechanizm zabezpieczający przed kodem z zewnątrz, który mógłby obejśc walidację:
+    composer require symfony/security-csrf

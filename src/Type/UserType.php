@@ -16,10 +16,10 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('surname', TextType::class)
-            ->add('iceLover', CheckboxType::class)
-            ->add('submit', SubmitType::class);
+            ->add('name', TextType::class, ['label'=>'Imię','attr' => array('class' => 'Css-class-name')])//'attr' => array('class' => 'fieldClass') -> dodaje klasę w css
+            ->add('surname', TextType::class, ['required' => false, 'label' => 'Nazwisko'])
+            ->add('iceLover', CheckboxType::class, ['required' => false, 'label' => 'Lubi lody'])
+            ->add('Add', SubmitType::class, ['label'=>'Dodaj']);
     }
 
 }
