@@ -4,7 +4,31 @@
 
     <h1>Dodaj osobę</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+
+    <div class="form-name-style">
+        <span>{{ form_label(form.name, 'Imie') }}</span>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div class="form-surname-style">
+        {{ form_row(form.surname) }}
+    </div>
+
+    <div class="form-category-style">
+        {{ form_row(form.category) }}
+    </div>
+
+    <div class="form-is-iceLover-style">
+        {{ form_row(form.iceLover) }}
+    </div>
+
+    <div class="form-add-user-style">
+        {{ form_row(form.add) }}
+    </div>
+
+    {{ form_end(form) }}
+
     <a href="{{ path('category_create') }}">Dodaj kategorię</a>
 
 

@@ -19,14 +19,14 @@ class UserType extends AbstractType
     {
         $builder
             //'attr' => array('class' => 'fieldClass') -> dodaje klasę w css
-            ->add('name', TextType::class, ['label'=>'Imię','attr' => array('class' => 'Css-class-name')])
+            ->add('name', TextType::class, ['label'=>'Imię'])
             ->add('surname', TextType::class, ['required' => false, 'label' => 'Nazwisko'])
             ->add('iceLover', CheckboxType::class, ['required' => false, 'label' => 'Lubi lody'])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])
-            ->add('Add', SubmitType::class, ['label'=>'Dodaj']);
+            ->add('add', SubmitType::class, ['label'=>'Dodaj']);
     }
 
 }
