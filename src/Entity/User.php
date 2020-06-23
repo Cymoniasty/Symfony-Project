@@ -15,7 +15,7 @@ class User
     /**
      * @ORM\Id()
      * @ORM\Column(type="integer")
-     * @var integer $uid
+     * @var integer $id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -41,7 +41,7 @@ class User
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
-     * @var Category
+     * @var Category|null
      */
     private $category;
 
@@ -97,7 +97,7 @@ class User
     /**
      * @return Category
      */
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }

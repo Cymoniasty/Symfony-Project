@@ -17,7 +17,8 @@ class Category
     /**
      * @ORM\Id()
      * @ORM\Column(type="integer")
-     * @var int
+     * @var integer $id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -52,5 +53,31 @@ class Category
         $user->setCategory($this);
         $this->users->add($user);
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+
 
 }

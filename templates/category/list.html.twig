@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Lista kategorii</h1>
+
+    {% if categories is not empty %}
+        {% for category in categories %}
+
+            <div>
+                <span>{{ category.id }}</span>
+                {{ category.name }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <a href="{{ path('category_create') }}">Dodaj kategorię</a>
+    <a href="{{ path('user_create') }}">Dodaj user'a</a>
+
+{% endblock %}

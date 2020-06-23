@@ -32,8 +32,10 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         //wypełnianie wartości w user
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
+            //persist przyjmuje tylko obiekt encji
             $em->persist($user);
+            //flush - skonczylismy edycje naszych encji i doctrine powinien uzupelnic dane w bazie
             $em->flush();
 
             return $this->redirectToRoute('user_list');

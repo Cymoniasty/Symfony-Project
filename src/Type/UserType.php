@@ -4,6 +4,8 @@
 namespace App\Type;
 
 
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,9 +18,14 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['label'=>'Imię','attr' => array('class' => 'Css-class-name')])//'attr' => array('class' => 'fieldClass') -> dodaje klasę w css
+            //'attr' => array('class' => 'fieldClass') -> dodaje klasę w css
+            ->add('name', TextType::class, ['label'=>'Imię','attr' => array('class' => 'Css-class-name')])
             ->add('surname', TextType::class, ['required' => false, 'label' => 'Nazwisko'])
             ->add('iceLover', CheckboxType::class, ['required' => false, 'label' => 'Lubi lody'])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
             ->add('Add', SubmitType::class, ['label'=>'Dodaj']);
     }
 
