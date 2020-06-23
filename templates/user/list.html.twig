@@ -10,6 +10,9 @@
                 {{ user.id }}
                 {{ user.name }}
                 {{ user.surname }}
+                {% if user.category %}
+                    {{ user.category.name }}
+                {% endif %}
                 <span>
                     <a href="{{ path('user_delete', {'id': user.id}) }}">Usuń</a>
                 </span>
